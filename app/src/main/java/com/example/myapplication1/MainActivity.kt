@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
@@ -26,6 +27,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.modifier.modifierLocalMapOf
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,15 +37,6 @@ import com.example.myapplication1.ui.theme.MyApplication1Theme
 import java.util.jar.Attributes.Name
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyApplication1Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
                     Greeting("Android")
                 }
             }
@@ -52,11 +46,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Column {
-       for (i in 1 <=......<= 10)
-        Icon(imageVector = Icons.Default.Add,
-            contentDescription = null
-        )
+    LazyColumn(modifier = Modifier.fillMaxSize()){
+items(10) {i ->
+androidx.compose.material3.Icon(
+    imageVector = Icons.Default.Add,
+    contentDescription =null ,
+    modifier = Modifier.size(400.dp)
+)
+}
     }
 }
 @Preview(showBackground = true)
